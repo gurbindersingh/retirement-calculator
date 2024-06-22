@@ -12,7 +12,7 @@ Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearS
 
 export function drawChart(plotData: IPlotData[]) {
     console.log(`Drawing chart`)
-    
+
     const chartElement = document.getElementById("chart") as HTMLCanvasElement | null;
     if (chartElement !== null) {
         new Chart(chartElement, {
@@ -21,7 +21,7 @@ export function drawChart(plotData: IPlotData[]) {
                 labels: plotData.map((dataPoint) => dataPoint.age),
                 datasets: [
                     {
-                        data: plotData.map((dataPoint) => dataPoint.assetValue),
+                        data: plotData.map((dataPoint) => dataPoint.investmentsValue),
                         borderColor: "dodgerblue"
                     }
                 ]

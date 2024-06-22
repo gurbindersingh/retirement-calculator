@@ -8,7 +8,7 @@ import { drawChart } from "./chart";
 const plotData: [PlotData] = [
     {
         age: settings.currentAge,
-        assetValue: settings.previousSavings,
+        investmentsValue: settings.previousSavings,
         savings: settings.netSalary * settings.savingsPercentage,
         investedAmount: settings.previousSavings,
         income: settings.netSalary,

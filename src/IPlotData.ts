@@ -1,6 +1,6 @@
 export interface IPlotData {
     age: number;
-    assetValue: number;
+    investmentsValue: number;
     savings: number;
     investedAmount: number;
     income: number,

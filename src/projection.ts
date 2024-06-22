@@ -46,34 +46,26 @@ function calculateDataPoints(
     inflation: number,
     plotData: PlotData[]
 ) {
-    console.log(`Calculating data points from index ${plotData.length} to ${endIndex - 1}`)
+    console.log(
+        `Calculating data points from index ${plotData.length} to ${endIndex - 1}`
+    );
 
     for (let i = plotData.length; i < endIndex; i++) {
         livingCosts *= inflation;
         income *= incomeIncrease;
         const previous = plotData[i - 1];
-        const age = previous.age + 1;
         const savings = income - livingCosts;
-        const investedAmount = previous.investedAmount + savings;
-        const assetValue =
-            previous.savings >= 0
-                ? previous.assetValue * settings.rateOfReturn + previous.savings
-                : sell(
-                      previous.assetValue,
-                      previous.assetValue / previous.investedAmount,
-                      settings.rateOfReturn,
-                      previous.savings,
-                      settings.tax
-                  );
 
-        plotData.push({
-            age,
-            assetValue,
+        const newEntry: PlotData = {
+            age: previous.age + 1,
+            investmentsValue: calculateAssetValue(previous),
             savings,
-            investedAmount,
+            investedAmount: previous.investedAmount + savings,
             livingCosts,
             income
-        });
+        };
+        console.log(newEntry);
+        plotData.push(newEntry);
     }
     return {
         livingCosts,
@@ -82,17 +74,18 @@ function calculateDataPoints(
     };
 }
 
-function sell(
-    assetValue: number,
-    assetGrowth: number,
-    rateOfReturn: number,
-    deficit: number,
-    tax: number
-) {
-    return (
-        (assetValue - calculateGrossValue(Math.abs(deficit), assetGrowth, tax)) *
-        rateOfReturn
-    );
+function calculateAssetValue(data: PlotData) {
+    return data.savings >= 0
+                ? data.investmentsValue * settings.rateOfReturn + data.savings
+                : sell(data, settings.rateOfReturn, settings.tax);
+}
+
+function sell(data: PlotData, rateOfReturn: number, tax: number) {
+    const deficit = data.savings;
+    const assetGrowth = data.investmentsValue / data.investedAmount;
+    const grossValue = calculateGrossValue(Math.abs(deficit), assetGrowth, tax);
+    console.log(`Deficit of ${deficit} -> ${grossValue} to sell`);
+    return (data.investmentsValue - grossValue) * rateOfReturn;
 }
 
 function calculateGrossValue(netValue: number, growthFactor: number, tax: number) {
