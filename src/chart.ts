@@ -19,7 +19,14 @@ Chart.register(
 );
 
 export function drawChart(plotData: IPlotData[]) {
-    console.log(`Drawing chart`);
+    console.log(
+        `Drawing chart with values`,
+        plotData.map(({ investments, income, livingCosts }) => ({
+            investments,
+            income,
+            livingCosts
+        }))
+    );
 
     const chartElement = document.getElementById("chart") as HTMLCanvasElement | null;
     if (chartElement !== null) {

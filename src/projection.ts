@@ -56,7 +56,8 @@ function initializeDataStructure(): PlotData[] {
                 investedAmount: 0
             })
         );
-    data[0].savings += settings.currentSavings;
+    data[0].investments += settings.currentSavings;
+    data[0].investedAmount += settings.currentSavings;
     console.log(data);
     return data;
 }
@@ -108,6 +109,6 @@ export function createProjection() {
             );
         }
     }
-    console.log(projections);
+    console.log("Projections:", projections);
     return projections;
 }
