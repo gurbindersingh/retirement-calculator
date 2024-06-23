@@ -1,8 +1,11 @@
 export interface IPlotData {
     age: number;
-    investmentsValue: number;
+    year: number;
+    income: number;
+    incomeIncrease: number;
     savings: number;
-    investedAmount: number;
-    income: number,
     livingCosts: number
+    inflation: number;
+    investments: number;
+    investedAmount: number;
 }
