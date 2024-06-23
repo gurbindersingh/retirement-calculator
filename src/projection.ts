@@ -98,15 +98,16 @@ export function createProjection() {
             const toSell = calculateGrossValue(deficit, growth, settings.tax);
             console.log(`Selling ${toSell}. Net ${deficit}`);
 
-            current.investments = (previous.investments - toSell) * settings.rateOfReturn;
-            current.investedAmount = previous.investedAmount - toSell / growth;
+            current.investments = Math.max(
+                0,
+                (previous.investments - toSell) * settings.rateOfReturn
+            );
+            current.investedAmount = Math.max(
+                0,
+                previous.investedAmount - toSell / growth
+            );
         }
     }
-    console.log(
-        projections.map(({ investments, investedAmount }) => ({
-            investments,
-            investedAmount
-        }))
-    );
+    console.log(projections);
     return projections;
 }
