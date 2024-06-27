@@ -7,7 +7,7 @@ import { settings } from "./settings";
  * @returns An array containing the initialized data points.
  */
 function initializeDataStructure(): PlotData[] {
-    settings.livingCosts = settings.netSalary - (1 - settings.savingsPercentage);
+    settings.livingCosts = settings.netSalary * (1 - settings.savingsPercentage);
     console.log("Initializing data with settings:", settings);    
 
     const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge)
