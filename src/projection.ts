@@ -8,21 +8,17 @@ import { settings } from "./settings";
  */
 function initializeDataStructure(): PlotData[] {
     console.log("Settings before initialization:", settings);
-    
-    settings.livingCosts = settings.netSalary * (1 - settings.savingsPercentage);
-    settings.salaryIncrease += 1;
-    settings.retirementIncomeIncrease += 1;
-    settings.averageInflation += 1;
-    settings.rateOfReturn += 1;
 
-    console.log("Initializing data with settings:", settings);    
+    settings.livingCosts = settings.netSalary * (1 - settings.savingsPercentage);
+
+    console.log("Initializing data with settings:", settings);
 
     const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge)
         .fill(0)
         .map((_, index: number) => ({
             year: index,
             age: settings.currentAge + index,
-            inflation: Math.pow(settings.averageInflation, index)
+            inflation: Math.pow(1 + settings.averageInflation, index)
         }))
         .map((value: { year: number; age: number; inflation: number }) => ({
             ...value,
@@ -32,9 +28,9 @@ function initializeDataStructure(): PlotData[] {
                     : settings.retirementIncome,
             incomeIncrease:
                 value.age < settings.retirementAge
-                    ? Math.pow(settings.salaryIncrease, value.year)
+                    ? Math.pow(1 + settings.salaryIncrease, value.year)
                     : Math.pow(
-                          settings.retirementIncomeIncrease,
+                          1 + settings.retirementIncomeIncrease,
                           value.age - settings.retirementAge
                       )
         }))
@@ -95,8 +91,7 @@ export function createProjection() {
     const projections = initializeDataStructure();
     console.log("Creating projections");
     console.log(settings);
-    
-    
+
     for (let i = 1; i < projections.length; i++) {
         const previous = projections[i - 1];
         const current = projections[i];
@@ -104,7 +99,7 @@ export function createProjection() {
         if (current.savings >= 0) {
             current.investedAmount = previous.investedAmount + current.savings;
             current.investments =
-                previous.investments * settings.rateOfReturn + current.savings;
+                previous.investments * (1 + settings.rateOfReturn) + current.savings;
         } else if (previous.investments > 0) {
             const deficit = Math.abs(current.savings);
             const growth = previous.investments / previous.investedAmount;
@@ -113,7 +108,7 @@ export function createProjection() {
 
             current.investments = Math.max(
                 0,
-                (previous.investments - toSell) * settings.rateOfReturn
+                (previous.investments - toSell) * (1 + settings.rateOfReturn)
             );
             current.investedAmount = Math.max(
                 0,
