@@ -50,18 +50,11 @@ const inputs: {
         id: "net_salary"
     },
     {
-        label: "Annual Salary Increase (in Percent)",
+        label: "Salary Increase",
         description: "",
         isPercentage: true,
         settingsKey: "salaryIncrease",
         id: "salary_increase"
-    },
-    {
-        label: "Current Savings Contributions (in Percent)",
-        description: "",
-        isPercentage: true,
-        settingsKey: "savingsPercentage",
-        id: "savings_percentage"
     },
     {
         label: "Previous Savings",
@@ -69,6 +62,13 @@ const inputs: {
         isPercentage: false,
         settingsKey: "currentSavings",
         id: "current_savings"
+    },
+    {
+        label: "Current Savings Contributions",
+        description: "",
+        isPercentage: true,
+        settingsKey: "savingsPercentage",
+        id: "savings_percentage"
     },
     {
         label: "Average Annual Inflation",
@@ -85,7 +85,7 @@ const inputs: {
         id: "retirement_income"
     },
     {
-        label: "Annual Retirement Income Increase",
+        label: "Retirement Income Increase",
         description: "",
         isPercentage: true,
         settingsKey: "retirementIncomeIncrease",
