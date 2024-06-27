@@ -5,9 +5,11 @@ import { inputs, settings } from "./settings";
 export function setupEventListeners() {
     inputs.forEach((input) =>
         document.getElementById(input.id)!.addEventListener("change", (event) => {
-            const element = (event.target as HTMLInputElement)
+            const element = event.target as HTMLInputElement;
             console.log(element);
-            (settings as any)[input.settingsKey] = element.valueAsNumber;
+            (settings as any)[input.settingsKey] = input.isPercentage
+                ? element.valueAsNumber / 100
+                : element.valueAsNumber;
             const data = createProjection();
             drawChart(data);
             console.log(settings);
