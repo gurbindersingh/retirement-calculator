@@ -4,7 +4,7 @@ const settings = {
     lifeExpectancy: 90,
     netSalary: 2600 * 14,
     salaryIncrease: 1.0225,
-    savingsPercentage: 0.14,
+    savingsPercentage: 0.15,
     currentSavings: 0,
     livingCosts: -100,
     averageInflation: 1.03,
