@@ -6,7 +6,7 @@ const settings = {
     salaryIncrease: 0.0225,
     savingsPercentage: 0.15,
     currentSavings: 0,
-    livingCosts: -100,
+    livingCosts: 0,
     averageInflation: 0.03,
     retirementIncome: 54345,
     retirementIncomeIncrease: 0.0225,
