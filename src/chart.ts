@@ -19,27 +19,29 @@ Chart.register(
 );
 
 function createDatasets(plotData: IPlotData[]) {
+    const borderWidth = 2;
+    const pointRadius = 0;
     return [
         {
             label: "Investments/Savings",
             data: plotData.map((dataPoint) => dataPoint.investments),
             borderColor: "dodgerblue",
-            borderWidth: 2,
-            pointRadius: 0
+            borderWidth,
+            pointRadius
         },
         {
             label: "Income",
             data: plotData.map((dataPoint) => dataPoint.income),
             borderColor: "mediumseagreen",
-            borderWidth: 2,
-            pointRadius: 0
+            borderWidth,
+            pointRadius
         },
         {
             label: "Living costs",
             data: plotData.map((dataPoint) => dataPoint.livingCosts),
             borderColor: "tomato",
-            borderWidth: 2,
-            pointRadius: 0
+            borderWidth,
+            pointRadius
         }
     ];
 }
@@ -66,9 +68,9 @@ export function drawChart(plotData: IPlotData[]) {
             livingCosts
         }))
     );
-    chart.data.labels = plotData.map((dataPoint) => dataPoint.age); 
-    chart.data.datasets = createDatasets(plotData)
-    chart.update()
+    chart.data.labels = plotData.map((dataPoint) => dataPoint.age);
+    chart.data.datasets = createDatasets(plotData);
+    chart.update();
 }
 
 let chart = createChart([]);
