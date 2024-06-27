@@ -1,6 +1,8 @@
 import { inputs, settings } from "./settings";
 
 export function renderInputs() {
+    console.log("Rendering input elements");
+    
     const settingsMap = new Map(Object.entries(settings));
 
     document.getElementById("controls")!.innerHTML = inputs

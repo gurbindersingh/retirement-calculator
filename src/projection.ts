@@ -8,6 +8,7 @@ import { settings } from "./settings";
  */
 function initializeDataStructure(): PlotData[] {
     settings.livingCosts = settings.netSalary - (1 - settings.savingsPercentage);
+    console.log("Initializing data with settings:", settings);    
 
     const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge)
         .fill(0)
@@ -60,7 +61,7 @@ function initializeDataStructure(): PlotData[] {
         );
     data[0].investments += settings.currentSavings;
     data[0].investedAmount += settings.currentSavings;
-    console.log(data);
+    console.log("Initialized data:", data);
     return data;
 }
 
@@ -85,13 +86,13 @@ function calculateGrossValue(netValue: number, growthFactor: number, tax: number
  */
 export function createProjection() {
     const projections = initializeDataStructure();
-
+    console.log("Creating projections");
+    
     for (let i = 1; i < projections.length; i++) {
         const previous = projections[i - 1];
         const current = projections[i];
 
         if (current.savings >= 0) {
-            console.log("Investing");
             current.investedAmount = previous.investedAmount + current.savings;
             current.investments =
                 previous.investments * settings.rateOfReturn + current.savings;
@@ -111,6 +112,6 @@ export function createProjection() {
             );
         }
     }
-    console.log("Projections:", projections);
+    console.log("Created projections:", projections);
     return projections;
 }
