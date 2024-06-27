@@ -17,6 +17,7 @@ export function renderInputs() {
                     id="${id}"
                     class="input"
                     type="number"
+                    min="0"
                 />
                 <p class="help">${description}</p>
             </div>`;
