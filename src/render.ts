@@ -15,7 +15,7 @@ export function renderInputs() {
                 <label class="label">${label}</label>
                 <input 
                     value="${isPercentage ? (100 * value).toPrecision(3) : value}"
-                    step="${isPercentage ? 0.1 : 1}"
+                    step="${isPercentage ? 0.5 : 1}"
                     aria-label="${label}"
                     id="${id}"
                     class="input"
