@@ -3,14 +3,14 @@ const settings = {
     retirementAge: 65,
     lifeExpectancy: 90,
     netSalary: 2600 * 14,
-    salaryIncrease: 1.0225,
+    salaryIncrease: 0.0225,
     savingsPercentage: 0.15,
     currentSavings: 0,
     livingCosts: -100,
-    averageInflation: 1.03,
+    averageInflation: 0.03,
     retirementIncome: 54345,
-    retirementIncomeIncrease: 1.0225,
-    rateOfReturn: 1.075,
+    retirementIncomeIncrease: 0.0225,
+    rateOfReturn: 0.075,
     tax: 0.275
 };
 

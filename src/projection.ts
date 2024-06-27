@@ -7,7 +7,14 @@ import { settings } from "./settings";
  * @returns An array containing the initialized data points.
  */
 function initializeDataStructure(): PlotData[] {
+    console.log("Settings before initialization:", settings);
+    
     settings.livingCosts = settings.netSalary * (1 - settings.savingsPercentage);
+    settings.salaryIncrease += 1;
+    settings.retirementIncomeIncrease += 1;
+    settings.averageInflation += 1;
+    settings.rateOfReturn += 1;
+
     console.log("Initializing data with settings:", settings);    
 
     const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge)
@@ -87,6 +94,8 @@ function calculateGrossValue(netValue: number, growthFactor: number, tax: number
 export function createProjection() {
     const projections = initializeDataStructure();
     console.log("Creating projections");
+    console.log(settings);
+    
     
     for (let i = 1; i < projections.length; i++) {
         const previous = projections[i - 1];
