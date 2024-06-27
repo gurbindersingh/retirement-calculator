@@ -8,14 +8,41 @@
     <body class="m-5">
         <h1 class="title is-2">Retirement Calculator</h1>
         <h2 class="subtitle is-4">
-            A generic retirement calculator to help you figure out how much you'll have when you retire.
+            A generic retirement calculator to help you figure out how much you'll have
+            when you retire.
         </h2>
         <div id="app" class="">
-            <div id="controls" class="grid is-col-min-12 mb-5">
-            </div>
+            <div id="controls" class="grid is-col-min-12 mb-5"></div>
             <div id="chart-container" class="column">
                 <h3 class="is-sr-only">Chart</h3>
                 <canvas id="chart" height="100"> </canvas>
+            </div>
+            <div class="content mt-5">
+                <h3 class="">How it works</h3>
+                <p>
+                    The calculator uses the value for your contributions towards saving to
+                    determine the living costs:
+                    <code>living costs = salary * (100% - contributions)</code>. From
+                    there for each year the salary is increased by the specified factor
+                    and the living costs by inflation value.
+                </p>
+                <p>
+                    The yearly savings are calculated by subtracting the living costs from
+                    the salary, they are then added to the total savings. We multiply each
+                    years total by the annual rate of return. To be more specific, the
+                    total savings you have access to for any given year is:
+                    <code
+                        >(previous year's total savings) * rate of return + current years
+                        savings</code
+                    >. This is similar to how a savings account usually works and to
+                    simplify we also apply the same logic to investments.
+                </p>
+                <p>
+                    Once the living costs outpace the income, we start using up our
+                    savings. For that we use the value of the tax to calculate how much we
+                    need to withdraw/sell (the gross value) in order to have an amount
+                    that is equal the deficit for that year.
+                </p>
             </div>
         </div>
         <script type="module" src="/src/main.ts"></script>
