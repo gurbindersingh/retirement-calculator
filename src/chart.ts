@@ -46,13 +46,13 @@ function createDatasets(plotData: IPlotData[]) {
 
 function createChart(plotData: IPlotData[]) {
     console.log("Creating chart object");
-    
+
     const chartElement = document.getElementById("chart") as HTMLCanvasElement;
     return new Chart(chartElement, {
         type: "line",
         data: {
             labels: plotData.map((dataPoint) => dataPoint.age),
-            datasets: createDatasets(plotData)
+            datasets: createDatasets([])
         }
     });
 }
@@ -66,10 +66,9 @@ export function drawChart(plotData: IPlotData[]) {
             livingCosts
         }))
     );
-    createChart(plotData)
-    // createDatasets(plotData).forEach(dataset => chart.data.datasets.push(dataset));
-    // chart.data.datasets.
-    // chart.update()
+    chart.data.labels = plotData.map((dataPoint) => dataPoint.age); 
+    chart.data.datasets = createDatasets(plotData)
+    chart.update()
 }
 
-// const chart = createChart([]);
+let chart = createChart([]);
