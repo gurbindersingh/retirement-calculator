@@ -10,7 +10,7 @@ export function renderInputs() {
             <div class="field">
                 <label class="label">${label}</label>
                 <input 
-                    value="${isPercentage ? (value - 1) * 100 : value}"
+                    value="${isPercentage ? (100 * (value - 1)).toPrecision(3) : value}"
                     aria-label="${label}"
                     id="${id}"
                     class="input"
