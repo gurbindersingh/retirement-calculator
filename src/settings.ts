@@ -101,7 +101,7 @@ const inputs: {
     {
         label: "Tax",
         description: "",
-        isPercentage: false,
+        isPercentage: true,
         settingsKey: "tax",
         id: "tax"
     }
