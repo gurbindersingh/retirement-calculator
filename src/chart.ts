@@ -18,6 +18,45 @@ Chart.register(
     Legend
 );
 
+function createDatasets(plotData: IPlotData[]) {
+    return [
+        {
+            label: "Investments/Savings",
+            data: plotData.map((dataPoint) => dataPoint.investments),
+            borderColor: "dodgerblue",
+            borderWidth: 2,
+            pointRadius: 0
+        },
+        {
+            label: "Income",
+            data: plotData.map((dataPoint) => dataPoint.income),
+            borderColor: "mediumseagreen",
+            borderWidth: 2,
+            pointRadius: 0
+        },
+        {
+            label: "Living costs",
+            data: plotData.map((dataPoint) => dataPoint.livingCosts),
+            borderColor: "tomato",
+            borderWidth: 2,
+            pointRadius: 0
+        }
+    ];
+}
+
+function createChart(plotData: IPlotData[]) {
+    console.log("Creating chart object");
+    
+    const chartElement = document.getElementById("chart") as HTMLCanvasElement;
+    return new Chart(chartElement, {
+        type: "line",
+        data: {
+            labels: plotData.map((dataPoint) => dataPoint.age),
+            datasets: createDatasets(plotData)
+        }
+    });
+}
+
 export function drawChart(plotData: IPlotData[]) {
     console.log(
         `Drawing chart with values`,
@@ -27,37 +66,10 @@ export function drawChart(plotData: IPlotData[]) {
             livingCosts
         }))
     );
-
-    const chartElement = document.getElementById("chart") as HTMLCanvasElement | null;
-    if (chartElement !== null) {
-        new Chart(chartElement, {
-            type: "line",
-            data: {
-                labels: plotData.map((dataPoint) => dataPoint.age),
-                datasets: [
-                    {
-                        label: "Investments/Savings",
-                        data: plotData.map((dataPoint) => dataPoint.investments),
-                        borderColor: "dodgerblue",
-                        borderWidth: 2,
-                        pointRadius: 0
-                    },
-                    {
-                        label: "Income",
-                        data: plotData.map((dataPoint) => dataPoint.income),
-                        borderColor: "mediumseagreen",
-                        borderWidth: 2,
-                        pointRadius: 0
-                    },
-                    {
-                        label: "Living costs",
-                        data: plotData.map((dataPoint) => dataPoint.livingCosts),
-                        borderColor: "tomato",
-                        borderWidth: 2,
-                        pointRadius: 0
-                    }
-                ]
-            }
-        });
-    }
+    createChart(plotData)
+    // createDatasets(plotData).forEach(dataset => chart.data.datasets.push(dataset));
+    // chart.data.datasets.
+    // chart.update()
 }
+
+// const chart = createChart([]);
