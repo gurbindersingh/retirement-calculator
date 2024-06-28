@@ -2,13 +2,13 @@ const settings = {
     currentAge: 30,
     retirementAge: 65,
     lifeExpectancy: 90,
-    netSalary: 50000,
+    netSalary: 30000,
     salaryIncrease: 0.02,
     savingsPercentage: 0.15,
     currentSavings: 0,
     livingCosts: 0,
     averageInflation: 0.03,
-    retirementIncome: 78000,
+    retirementIncome: 50000,
     retirementIncomeIncrease: 0.02,
     rateOfReturn: 0.075,
     tax: 0.275
@@ -99,7 +99,7 @@ const inputs: {
         id: "rate_of_return"
     },
     {
-        label: "Tax",
+        label: "Capital Gains Tax",
         description: "",
         isPercentage: true,
         settingsKey: "tax",
