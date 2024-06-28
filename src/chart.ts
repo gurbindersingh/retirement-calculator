@@ -5,7 +5,9 @@ import {
     PointElement,
     CategoryScale,
     LinearScale,
-    Legend
+    Legend,
+    Title, 
+    Tooltip
 } from "chart.js";
 import { IPlotData } from "./IPlotData";
 
@@ -15,33 +17,27 @@ Chart.register(
     PointElement,
     CategoryScale,
     LinearScale,
-    Legend
+    Legend,
+    Title, 
+    Tooltip
 );
 
 function createDatasets(plotData: IPlotData[]) {
-    const borderWidth = 2;
-    const pointRadius = 0;
     return [
         {
             label: "Investments/Savings",
             data: plotData.map((dataPoint) => dataPoint.investments),
             borderColor: "dodgerblue",
-            borderWidth,
-            pointRadius
         },
         {
             label: "Income",
             data: plotData.map((dataPoint) => dataPoint.income),
             borderColor: "mediumseagreen",
-            borderWidth,
-            pointRadius
         },
         {
             label: "Living costs",
             data: plotData.map((dataPoint) => dataPoint.livingCosts),
             borderColor: "tomato",
-            borderWidth,
-            pointRadius
         }
     ];
 }
@@ -55,6 +51,15 @@ function createChart(plotData: IPlotData[]) {
         data: {
             labels: plotData.map((dataPoint) => dataPoint.age),
             datasets: createDatasets([])
+        },
+        options: {
+            datasets: {
+                line: {
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHitRadius: 5,
+                }
+            }
         }
     });
 }
