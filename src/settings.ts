@@ -44,14 +44,14 @@ const inputs: {
     },
     {
         label: "Annual Net Salary",
-        description: "",
+        description: "This is your take home salary after taxes",
         isPercentage: false,
         settingsKey: "netSalary",
         id: "net_salary"
     },
     {
         label: "Salary Increase",
-        description: "",
+        description: "The average salary increase you expect per year",
         isPercentage: true,
         settingsKey: "salaryIncrease",
         id: "salary_increase"
@@ -65,7 +65,7 @@ const inputs: {
     },
     {
         label: "Current Savings Contributions",
-        description: "",
+        description: "The percentage of your salary that goes towards savings",
         isPercentage: true,
         settingsKey: "savingsPercentage",
         id: "savings_percentage"
@@ -79,7 +79,7 @@ const inputs: {
     },
     {
         label: "Annual Retirement Income",
-        description: "",
+        description: "A retirement income like a pension",
         isPercentage: false,
         settingsKey: "retirementIncome",
         id: "retirement_income"
@@ -93,14 +93,14 @@ const inputs: {
     },
     {
         label: "Rate of Return",
-        description: "",
+        description: "The average rate of return on your savings or investments",
         isPercentage: true,
         settingsKey: "rateOfReturn",
         id: "rate_of_return"
     },
     {
         label: "Capital Gains Tax",
-        description: "",
+        description: "How much tax you pay on your investments when sold",
         isPercentage: true,
         settingsKey: "tax",
         id: "tax"
