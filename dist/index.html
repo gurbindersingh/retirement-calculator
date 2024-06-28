@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Retirement Calculator</title>
-      <script type="module" crossorigin src="assets/index-0_wtdALk.js"></script>
+      <script type="module" crossorigin src="assets/index-Fwo-iSqk.js"></script>
       <link rel="stylesheet" crossorigin href="assets/index-BXENOyGJ.css">
     </head>
     <body class="m-5">
@@ -21,29 +21,41 @@
             </div>
             <div class="content mt-5">
                 <h3 class="">How it works</h3>
+                <div class="message is-info">
+                    <div class="message-body">
+                        This calculator is only meant to serve as a ballpark estimate and
+                        is by no means 100% accurate because we have to make simplified
+                        assumptions for certain things.
+                    </div>
+                </div>
                 <p>
-                    The calculator uses the value for your contributions towards saving to
-                    determine the living costs:
+                    The living costs are calculated using the value for contributions
+                    towards saving:
                     <code>living costs = salary * (100% - contributions)</code>. From
-                    there for each year the salary is increased by the specified factor
-                    and the living costs by inflation value.
+                    there, for each year the salary is increased by the specified factor
+                    and the living costs by inflation rate.
                 </p>
                 <p>
-                    The yearly savings are calculated by subtracting the living costs from
+                    The annual savings are calculated by subtracting the living costs from
                     the salary, they are then added to the total savings. We multiply each
                     years total by the annual rate of return. To be more specific, the
-                    total savings you have access to for any given year is:
+                    total savings you have access to for any given year is equal to
                     <code
                         >(previous year's total savings) * rate of return + current years
                         savings</code
                     >. This is similar to how a savings account usually works and to
-                    simplify we also apply the same logic to investments.
+                    simplify we also apply the same logic to investments. Note that this
+                    calculator also doesn't take into things like a mortgage, which would
+                    stop after a certain period. To account for that you could for example
+                    subtract the annual mortgage payments from your salary instead.
                 </p>
                 <p>
                     Once the living costs overtake the income, we start using up our
                     savings. For that we use the tax to calculate how much we need to
                     withdraw/sell in order to have an amount that is equal the deficit for
-                    that year.
+                    that year. This is another simplification because in case of
+                    investments we might not always be able to sell exactly the amount we
+                    need.
                 </p>
             </div>
         </div>
