@@ -26,77 +26,77 @@ const inputs: {
         description: "",
         isPercentage: false,
         settingsKey: "currentAge",
-        id: "current_age"
+        id: "current-age"
     },
     {
         label: "Retirement Age",
         description: "",
         isPercentage: false,
         settingsKey: "retirementAge",
-        id: "retirement_age"
+        id: "retirement-age"
     },
     {
         label: "Life Expectancy",
         description: "",
         isPercentage: false,
         settingsKey: "lifeExpectancy",
-        id: "life_expectancy"
+        id: "life-expectancy"
     },
     {
         label: "Annual Net Salary",
         description: "This is your take home salary after taxes",
         isPercentage: false,
         settingsKey: "netSalary",
-        id: "net_salary"
+        id: "net-salary"
     },
     {
         label: "Salary Increase",
         description: "The average salary increase you expect per year",
         isPercentage: true,
         settingsKey: "salaryIncrease",
-        id: "salary_increase"
+        id: "salary-increase"
     },
     {
         label: "Previous Savings",
         description: "",
         isPercentage: false,
         settingsKey: "currentSavings",
-        id: "current_savings"
+        id: "current-savings"
     },
     {
         label: "Current Savings Contributions",
         description: "The percentage of your salary that goes towards savings",
         isPercentage: true,
         settingsKey: "savingsPercentage",
-        id: "savings_percentage"
+        id: "savings-percentage"
     },
     {
         label: "Average Annual Inflation",
         description: "",
         isPercentage: true,
         settingsKey: "averageInflation",
-        id: "average_inflation"
+        id: "average-inflation"
     },
     {
         label: "Annual Retirement Income",
         description: "A retirement income like a pension",
         isPercentage: false,
         settingsKey: "retirementIncome",
-        id: "retirement_income"
+        id: "retirement-income"
     },
     {
         label: "Retirement Income Increase",
         description: "",
         isPercentage: true,
         settingsKey: "retirementIncomeIncrease",
-        id: "retirement_income_increase"
+        id: "retirement-income-increase"
     },
     {
         label: "Rate of Return",
         description: "The average rate of return on your savings or investments",
         isPercentage: true,
         settingsKey: "rateOfReturn",
-        id: "rate_of_return"
+        id: "rate-of-return"
     },
     {
         label: "Capital Gains Tax",
