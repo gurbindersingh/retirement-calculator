@@ -9,7 +9,7 @@ const settings = {
     livingCosts: 0,
     averageInflation: 0.03,
     retirementIncome: 50000,
-    retirementIncomeIncrease: 0.02,
+    retirementIncomeIncrease: 0,
     rateOfReturn: 0.075,
     tax: 0.275
 };
@@ -19,7 +19,7 @@ const inputs: {
     description: string;
     settingsKey: string;
     isPercentage: boolean;
-    id: string
+    id: string;
 }[] = [
     {
         label: "Current Age",
@@ -51,14 +51,14 @@ const inputs: {
     },
     {
         label: "Salary Increase",
-        description: "The average salary increase you expect per year",
+        description: `The average salary increase you expect per year <a href="#first">[1]</a>`,
         isPercentage: true,
         settingsKey: "salaryIncrease",
         id: "salary-increase"
     },
     {
-        label: "Previous Savings",
-        description: "",
+        label: "Current Savings",
+        description: `The total sum of your current savings <a href="#second">[2]</a>`,
         isPercentage: false,
         settingsKey: "currentSavings",
         id: "current-savings"
@@ -86,7 +86,7 @@ const inputs: {
     },
     {
         label: "Retirement Income Increase",
-        description: "",
+        description: `The annual increase of your retirement income <a href="#third">[3]</a>`,
         isPercentage: true,
         settingsKey: "retirementIncomeIncrease",
         id: "retirement-income-increase"
