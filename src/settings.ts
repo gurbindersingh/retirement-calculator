@@ -71,21 +71,21 @@ const inputs: Inputs[] = [
     },
     {
         label: "Salary Increase",
-        description: `The average salary increase you expect per year <a href="#first">[1]</a>`,
+        description: `The average salary increase you expect per year <a href="#si">[1]</a>`,
         isPercentage: true,
         settingsKey: "salaryIncrease",
         id: "salary-increase"
     },
     {
         label: "Current Savings",
-        description: `The total sum of your current savings <a href="#second">[2]</a>`,
+        description: `The total sum of your current savings <a href="#cs">[2]</a>`,
         isPercentage: false,
         settingsKey: "currentSavings",
         id: "current-savings"
     },
     {
         label: "Current Savings Contributions",
-        description: "The percentage of your salary that goes towards savings",
+        description: `The percentage of your salary that goes towards savings <a href="#csc">[3]</a>`,
         isPercentage: true,
         settingsKey: "savingsPercentage",
         id: "savings-percentage"
@@ -106,7 +106,7 @@ const inputs: Inputs[] = [
     },
     {
         label: "Retirement Income Increase",
-        description: `The annual increase of your retirement income <a href="#third">[3]</a>`,
+        description: `The annual increase of your retirement income <a href="#rii">[4]</a>`,
         isPercentage: true,
         settingsKey: "retirementIncomeIncrease",
         id: "retirement-income-increase"
