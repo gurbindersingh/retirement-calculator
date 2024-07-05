@@ -1,4 +1,4 @@
-export interface IPlotData {
+export interface PlotData {
     age: number;
     year: number;
     income: number;

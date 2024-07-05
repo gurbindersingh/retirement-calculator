@@ -1,4 +1,4 @@
-import { IPlotData as PlotData } from "./IPlotData";
+import { PlotData } from "./IPlotData";
 import { settings } from "./settings";
 
 /**

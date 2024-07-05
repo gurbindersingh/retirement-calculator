@@ -9,7 +9,7 @@ import {
     Title,
     Tooltip
 } from "chart.js";
-import { IPlotData } from "./IPlotData";
+import { PlotData } from "./IPlotData";
 
 Chart.register(
     LineController,
@@ -22,7 +22,7 @@ Chart.register(
     Tooltip
 );
 
-function createDatasets(plotData: IPlotData[]) {
+function createDatasets(plotData: PlotData[]) {
     return [
         {
             label: "Investments/Savings",
@@ -42,7 +42,7 @@ function createDatasets(plotData: IPlotData[]) {
     ];
 }
 
-function createChart(plotData: IPlotData[]) {
+function createChart(plotData: PlotData[]) {
     console.log("Creating chart");
 
     document.getElementById("chart-container")!.innerHTML = `
@@ -70,7 +70,7 @@ function createChart(plotData: IPlotData[]) {
     });
 }
 
-export function drawChart(plotData: IPlotData[]) {
+export function drawChart(plotData: PlotData[]) {
     console.log(
         `Drawing chart with values`,
         plotData.map(({ investments, income, livingCosts }) => ({
