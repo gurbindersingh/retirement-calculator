@@ -1,26 +1,46 @@
-const settings = {
-    currentAge: 30,
-    retirementAge: 65,
-    lifeExpectancy: 90,
-    netSalary: 30000,
-    salaryIncrease: 0.02,
-    savingsPercentage: 0.15,
-    currentSavings: 0,
-    livingCosts: 0,
-    averageInflation: 0.03,
-    retirementIncome: 50000,
-    retirementIncomeIncrease: 0,
-    rateOfReturn: 0.075,
-    tax: 0.275
-};
+interface Settings {
+    currentAge: number;
+    retirementAge: number;
+    lifeExpectancy: number;
+    netSalary: number;
+    salaryIncrease: number;
+    savingsPercentage: number;
+    currentSavings: number;
+    livingCosts: number;
+    averageInflation: number;
+    retirementIncome: number;
+    retirementIncomeIncrease: number;
+    rateOfReturn: number;
+    tax: number;
+}
 
-const inputs: {
+interface Inputs {
     label: string;
     description: string;
     settingsKey: string;
     isPercentage: boolean;
     id: string;
-}[] = [
+}
+
+const settings: Settings = window.localStorage.getItem("settings")
+    ? JSON.parse(window.localStorage.getItem("settings")!)
+    : {
+          currentAge: 30,
+          retirementAge: 65,
+          lifeExpectancy: 90,
+          netSalary: 30000,
+          salaryIncrease: 0.02,
+          savingsPercentage: 0.15,
+          currentSavings: 0,
+          livingCosts: 0,
+          averageInflation: 0.03,
+          retirementIncome: 50000,
+          retirementIncomeIncrease: 0,
+          rateOfReturn: 0.075,
+          tax: 0.275
+      };
+
+const inputs: Inputs[] = [
     {
         label: "Current Age",
         description: "",
