@@ -72,7 +72,7 @@ const inputs: Inputs[] = [
         id: "net-salary"
     },
     {
-        label: "Salary Increase",
+        label: "Salary Increase (in %)",
         description: `The average salary increase you expect per year <a href="#si">[1]</a>`,
         isPercentage: true,
         settingsKey: "salaryIncrease",
@@ -86,14 +86,14 @@ const inputs: Inputs[] = [
         id: "current-savings"
     },
     {
-        label: "Current Savings Contributions",
+        label: "Current Savings Contributions (in %)",
         description: `The percentage of your salary that goes towards savings <a href="#csc">[3]</a>`,
         isPercentage: true,
         settingsKey: "savingsPercentage",
         id: "savings-percentage"
     },
     {
-        label: "Average Annual Inflation",
+        label: "Average Annual Inflation (in %)",
         description: "",
         isPercentage: true,
         settingsKey: "averageInflation",
@@ -107,21 +107,21 @@ const inputs: Inputs[] = [
         id: "retirement-income"
     },
     {
-        label: "Retirement Income Increase",
+        label: "Retirement Income Increase (in %)",
         description: `The annual increase of your retirement income <a href="#rii">[4]</a>`,
         isPercentage: true,
         settingsKey: "retirementIncomeIncrease",
         id: "retirement-income-increase"
     },
     {
-        label: "Rate of Return",
+        label: "Rate of Return (in %)",
         description: "The average rate of return on your savings or investments",
         isPercentage: true,
         settingsKey: "rateOfReturn",
         id: "rate-of-return"
     },
     {
-        label: "Capital Gains Tax",
+        label: "Capital Gains Tax (in %)",
         description: "How much tax you pay on your investments when sold",
         isPercentage: true,
         settingsKey: "tax",
