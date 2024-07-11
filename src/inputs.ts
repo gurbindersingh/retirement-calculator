@@ -19,7 +19,7 @@ const inputs: Inputs[] = [
         isPercentage: false,
         settingsKey: "currentAge",
         id: "current-age",
-        isValid: () => settings.currentAge < settings.retirementAge,
+        isValid: () => settings.currentAge <= settings.retirementAge,
         min: 0,
         max: 150
     },

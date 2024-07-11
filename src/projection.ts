@@ -13,7 +13,7 @@ function initializeDataStructure(): PlotData[] {
 
     console.log("Initializing data with settings:", settings);
 
-    const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge)
+    const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge + 1)
         .fill(0)
         .map((_, index: number) => ({
             year: index,
