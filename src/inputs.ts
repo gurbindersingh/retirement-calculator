@@ -150,6 +150,8 @@ const inputs: Inputs[] = [
         isPercentage: true,
         settingsKey: "tax",
         id: "tax",
+        footnote: `This may depend on where you are but in most countries this 
+                    is typically the capital gains tax.`,
         isValid: () => true,
         min: 0,
         max: 100
