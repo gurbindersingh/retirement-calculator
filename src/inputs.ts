@@ -3,6 +3,7 @@ import { settings } from "./settings";
 interface Inputs {
     label: string;
     description: string;
+    errorMessage?: string;
     settingsKey: string;
     isPercentage: boolean;
     id: string;
@@ -16,6 +17,7 @@ const inputs: Inputs[] = [
     {
         label: "Current Age",
         description: "",
+        errorMessage: "This value must not be greater than your retirement age!",
         isPercentage: false,
         settingsKey: "currentAge",
         id: "current-age",
@@ -26,6 +28,7 @@ const inputs: Inputs[] = [
     {
         label: "Retirement Age",
         description: "",
+        errorMessage: "This value must not be greater than the life expectancy!",
         isPercentage: false,
         settingsKey: "retirementAge",
         id: "retirement-age",
@@ -153,4 +156,16 @@ const inputs: Inputs[] = [
     }
 ];
 
-export { inputs };
+function toggleInputErrorHints(inputId: string, isValid: boolean) {
+    if (isValid) {
+        document.getElementById(`${inputId}`)!.classList.remove("is-danger");
+        document.getElementById(`${inputId}-help`)!.classList.remove("is-hidden");
+        document.getElementById(`${inputId}-error`)!.classList.add("is-hidden");
+    } else {
+        document.getElementById(`${inputId}`)!.classList.add("is-danger");
+        document.getElementById(`${inputId}-help`)!.classList.add("is-hidden");
+        document.getElementById(`${inputId}-error`)!.classList.remove("is-hidden");
+    }
+}
+
+export { inputs, toggleInputErrorHints };

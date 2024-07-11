@@ -2,23 +2,28 @@ import { drawChart } from "./chart";
 import { createProjection } from "./projection";
 import { renderControls } from "./render";
 import { resetSettings, settings } from "./settings";
-import { inputs } from "./inputs";
+import { inputs, toggleInputErrorHints } from "./inputs";
 
 export function setupEventListeners() {
     inputs.forEach((input) =>
         document.getElementById(input.id)!.addEventListener("change", (event) => {
             const element = event.target as HTMLInputElement;
-            console.log(element);
 
-            (settings as any)[input.settingsKey] = input.isPercentage
+            const newValue = input.isPercentage
                 ? element.valueAsNumber / 100
                 : element.valueAsNumber;
-            // console.log(settings);
+
+            (settings as any)[input.settingsKey] = newValue;
             window.localStorage.setItem("settings", JSON.stringify(settings));
-            
+
             if (input.isValid()) {
+                toggleInputErrorHints(input.id, input.isValid());
+                const start = Date.now();
                 const data = createProjection();
                 drawChart(data);
+                console.log(`Time to render: ${Date.now() - start} ms`);
+            } else {
+                toggleInputErrorHints(input.id, input.isValid())
             }
         })
     );

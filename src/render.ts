@@ -10,6 +10,7 @@ function renderControls() {
             const {
                 label,
                 description,
+                errorMessage,
                 settingsKey,
                 isPercentage,
                 id,
@@ -25,6 +26,9 @@ function renderControls() {
             const helpText = `<p id="${id}-help" class="help">
                                 ${description} ${footnoteLink}
                               </p>`;
+            const errorText = `<p id="${id}-error" class="help is-danger is-hidden">
+                                ${errorMessage ? errorMessage : ""}
+                              </p>`;
 
             return `<div class="field cell">
                         <label class="label">${label}</label>
@@ -39,6 +43,7 @@ function renderControls() {
                             max="${max}"
                         />
                         ${helpText}
+                        ${errorText}
                     </div>`;
         })
         .join("");
