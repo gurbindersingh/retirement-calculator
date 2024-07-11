@@ -7,7 +7,16 @@ function renderControls() {
 
     const inputElements = inputs
         .map((input) => {
-            const { label, description, settingsKey, isPercentage, id, footnote } = input;
+            const {
+                label,
+                description,
+                settingsKey,
+                isPercentage,
+                id,
+                footnote,
+                min,
+                max
+            } = input;
             const value = settingsMap.get(settingsKey)!;
 
             const footnoteLink = footnote
@@ -26,7 +35,8 @@ function renderControls() {
                             id="${id}"
                             class="input"
                             type="number"
-                            min="0"
+                            min="${min}"
+                            max="${max}"
                         />
                         ${helpText}
                     </div>`;

@@ -1,3 +1,5 @@
+import { settings } from "./settings";
+
 interface Inputs {
     label: string;
     description: string;
@@ -5,6 +7,9 @@ interface Inputs {
     isPercentage: boolean;
     id: string;
     footnote?: string;
+    isValid?: () => boolean;
+    min: number;
+    max: number;
 }
 
 const inputs: Inputs[] = [
@@ -13,28 +18,38 @@ const inputs: Inputs[] = [
         description: "",
         isPercentage: false,
         settingsKey: "currentAge",
-        id: "current-age"
+        id: "current-age",
+        isValid: () => settings.currentAge < settings.retirementAge,
+        min: 0,
+        max: 150
     },
     {
         label: "Retirement Age",
         description: "",
         isPercentage: false,
         settingsKey: "retirementAge",
-        id: "retirement-age"
+        id: "retirement-age",
+        isValid: () => settings.retirementAge < settings.lifeExpectancy,
+        min: 0,
+        max: 150
     },
     {
         label: "Life Expectancy",
         description: "",
         isPercentage: false,
         settingsKey: "lifeExpectancy",
-        id: "life-expectancy"
+        id: "life-expectancy",
+        min: 0,
+        max: 150
     },
     {
         label: "Annual Net Salary",
         description: "This is your take home salary after taxes",
         isPercentage: false,
         settingsKey: "netSalary",
-        id: "net-salary"
+        id: "net-salary",
+        min: 0,
+        max: 1_000_000_000
     },
     {
         label: "Salary Increase (in %)",
@@ -49,7 +64,9 @@ const inputs: Inputs[] = [
                     you switch jobs and have a salary of 55,000, this is an increase of
                     10% (a factor of <code>1.10</code>). To find the annual increase,
                     calculate <code>nth_root(3, 1.10) or 1.10^(1/3) = ~1.03228...</code>,
-                    which is approximately 3.23%.`
+                    which is approximately 3.23%.`,
+        min: 0,
+        max: 100
     },
     {
         label: "Current Savings",
@@ -58,7 +75,9 @@ const inputs: Inputs[] = [
         settingsKey: "currentSavings",
         id: "current-savings",
         footnote: `This amount is also assumed to be invested with the same rate of
-                    return as specified above.`
+                    return as specified above.`,
+        min: 0,
+        max: 1_000_000_000
     },
     {
         label: "Current Savings Contributions (in %)",
@@ -70,21 +89,27 @@ const inputs: Inputs[] = [
                     investments. It is also used to determine the current living costs by
                     subtracting the amount from your salary. Any further saving
                     contributions are calculated by subtracting the living costs from the
-                    salary.`
+                    salary.`,
+        min: -100,
+        max: 100
     },
     {
         label: "Average Annual Inflation (in %)",
         description: "",
         isPercentage: true,
         settingsKey: "averageInflation",
-        id: "average-inflation"
+        id: "average-inflation",
+        min: -100,
+        max: 100
     },
     {
         label: "Annual Retirement Income",
         description: "A retirement income like a pension",
         isPercentage: false,
         settingsKey: "retirementIncome",
-        id: "retirement-income"
+        id: "retirement-income",
+        min: 0,
+        max: 1_000_000_000
     },
     {
         label: "Retirement Income Increase (in %)",
@@ -94,21 +119,27 @@ const inputs: Inputs[] = [
         id: "retirement-income-increase",
         footnote: `In some places, the pension you receive is increased each year to
                     account for inflation. If this is not the case where you are, just
-                    leave this value at 0.`
+                    leave this value at 0.`,
+        min: 0,
+        max: 100
     },
     {
         label: "Rate of Return (in %)",
         description: "The average rate of return on your savings or investments",
         isPercentage: true,
         settingsKey: "rateOfReturn",
-        id: "rate-of-return"
+        id: "rate-of-return",
+        min: 0,
+        max: 100
     },
     {
         label: "Tax on Investments (in %)",
         description: "How much tax you pay on your investments when sold",
         isPercentage: true,
         settingsKey: "tax",
-        id: "tax"
+        id: "tax",
+        min: 0,
+        max: 100
     }
 ];
 
