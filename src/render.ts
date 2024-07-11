@@ -4,7 +4,7 @@ import { inputs } from "./inputs";
 function renderControls() {
     let footnoteCounter = 1;
     const settingsMap = new Map(Object.entries(settings));
-    
+
     const inputElements = inputs
         .map((input) => {
             const { label, description, settingsKey, isPercentage, id, footnote } = input;
@@ -21,7 +21,7 @@ function renderControls() {
                         <label class="label">${label}</label>
                         <input 
                             value="${isPercentage ? (100 * value).toPrecision(3) : value}"
-                            step="${isPercentage ? 0.05 : 1}"
+                            step="${isPercentage ? 0.1 : 1}"
                             aria-label="${label}"
                             id="${id}"
                             class="input"
