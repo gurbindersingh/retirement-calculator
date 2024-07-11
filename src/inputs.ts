@@ -67,7 +67,7 @@ const inputs: Inputs[] = [
                     10% (a factor of <code>1.10</code>). To find the annual increase,
                     calculate <code>nth_root(3, 1.10) or 1.10^(1/3) = ~1.03228...</code>,
                     which is approximately 3.23%.`,
-                    isValid: () => true,
+        isValid: () => true,
         min: 0,
         max: 100
     },
@@ -79,7 +79,7 @@ const inputs: Inputs[] = [
         id: "current-savings",
         footnote: `This amount is also assumed to be invested with the same rate of
                     return as specified above.`,
-                    isValid: () => true,
+        isValid: () => true,
         min: 0,
         max: 1_000_000_000
     },
@@ -94,7 +94,7 @@ const inputs: Inputs[] = [
                     subtracting the amount from your salary. Any further saving
                     contributions are calculated by subtracting the living costs from the
                     salary.`,
-                    isValid: () => true,
+        isValid: () => true,
         min: -100,
         max: 100
     },
@@ -127,7 +127,7 @@ const inputs: Inputs[] = [
         footnote: `In some places, the pension you receive is increased each year to
                     account for inflation. If this is not the case where you are, just
                     leave this value at 0.`,
-                    isValid: () => true,
+        isValid: () => true,
         min: 0,
         max: 100
     },
