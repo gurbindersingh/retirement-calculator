@@ -14,7 +14,7 @@ export function setupEventListeners() {
                 ? element.valueAsNumber / 100
                 : element.valueAsNumber;
             // console.log(settings);
-
+            window.localStorage.setItem("settings", JSON.stringify(settings));
             const data = createProjection();
             drawChart(data);
         })
