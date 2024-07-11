@@ -15,82 +15,60 @@
             <div id="controls" class="grid is-col-min-12 mb-5"></div>
             <div id="chart-container" class="column"></div>
             <div class="content mt-5">
-                <h3 class="">How it works</h3>
-                <div class="message is-info">
-                    <div class="message-body">
-                        This calculator is only meant to serve as a ballpark estimate and
-                        is by no means 100% accurate because we have to make simplified
-                        assumptions for certain things.
+                <div id="how-it-works">
+                    <h3 class="">How it works</h3>
+                    <div class="message is-info">
+                        <div class="message-body">
+                            This calculator is only meant to serve as a ballpark estimate
+                            and is by no means 100% accurate because we have to make
+                            simplified assumptions for certain things.
+                        </div>
                     </div>
+                    <p>
+                        The living costs are calculated using the value for contributions
+                        towards saving:
+                        <code>living costs = salary * (100% - contributions)</code>. From
+                        there, for each year the salary is increased by the specified
+                        factor and the living costs by inflation rate.
+                    </p>
+                    <p>
+                        The annual savings are calculated by subtracting living costs from
+                        the salary and then adding the result to the total savings. We
+                        multiply each year's total savings by the annual rate of return.
+                        Specifically, the total savings available for any given year is
+                        equal to
+                        <code
+                            >(previous year's total savings) * rate of return + current
+                            year's savings</code
+                        >. This is similar to how a savings account typically works, and
+                        for simplicity, we apply the same logic to investments.
+                    </p>
+                    <p>
+                        There is a simplification in how the tax is applied, however. Most
+                        people invest in ETFs or mutual funds and do not withdraw from
+                        these investments until needed. Therefore, the calculator assumes
+                        that taxes are paid only when you sell your investments (capital
+                        gains tax) and ignores taxes on dividends. This is partly because
+                        the applicable tax depends on the country; it might be income tax
+                        or capital gains tax. To account for this inaccuracy, you can use
+                        a slightly lower value for the rate of return.
+                    </p>
+                    <p>
+                        Note that this calculator does not consider expenses like a
+                        mortgage, which would end after a certain period. To account for
+                        that, you could, for example, subtract the annual mortgage
+                        payments from your salary instead.
+                    </p>
+                    <p>
+                        Once living costs exceed income, we start using our savings. In
+                        this case, we use the tax rate to calculate how much we need to
+                        withdraw or sell to cover the deficit for that year. This is
+                        another simplification because, in the case of investments, it
+                        might not always be possible to sell the exact amount needed.
+                    </p>
                 </div>
-                <p>
-                    The living costs are calculated using the value for contributions
-                    towards saving:
-                    <code>living costs = salary * (100% - contributions)</code>. From
-                    there, for each year the salary is increased by the specified factor
-                    and the living costs by inflation rate.
-                </p>
-                <p>
-                    The annual savings are calculated by subtracting living costs from the
-                    salary and then adding the result to the total savings. We multiply
-                    each year's total savings by the annual rate of return. Specifically,
-                    the total savings available for any given year is equal to
-                    <code
-                        >(previous year's total savings) * rate of return + current year's
-                        savings</code
-                    >. This is similar to how a savings account typically works, and for
-                    simplicity, we apply the same logic to investments.
-                </p>
-                <p>
-                    There is a simplification in how the tax is applied, however. Most
-                    people invest in ETFs or mutual funds and do not withdraw from these
-                    investments until needed. Therefore, the calculator assumes that taxes
-                    are paid only when you sell your investments (capital gains tax) and
-                    ignores taxes on dividends. This is partly because the applicable tax
-                    depends on the country; it might be income tax or capital gains tax.
-                    To account for this inaccuracy, you can use a slightly lower value for
-                    the rate of return.
-                </p>
-                <p>
-                    Note that this calculator does not consider expenses like a mortgage,
-                    which would end after a certain period. To account for that, you
-                    could, for example, subtract the annual mortgage payments from your
-                    salary instead.
-                </p>
-                <p>
-                    Once living costs exceed income, we start using our savings. In this
-                    case, we use the tax rate to calculate how much we need to withdraw or
-                    sell to cover the deficit for that year. This is another
-                    simplification because, in the case of investments, it might not
-                    always be possible to sell the exact amount needed.
-                </p>
                 <hr />
-                <p id="si" class="has-text-grey">
-                    [1] If your salary does not increase every year, you can easily
-                    calculate the yearly value by taking the n-th root of the total
-                    increase, where n is the number of years. For example, if you started
-                    your job in 2024 with an annual net salary of 50,000 and then in 2027
-                    you switch jobs and have a salary of 55,000, this is an increase of
-                    10% (a factor of <code>1.10</code>). To find the annual increase,
-                    calculate <code>nth_root(3, 1.10) or 1.10^(1/3) = ~1.03228...</code>,
-                    which is approximately 3.23%.
-                </p>
-                <p id="cs" class="has-text-grey">
-                    [2] This amount is also assumed to be invested with the same rate of
-                    return as specified above.
-                </p>
-                <p id="csc" class="has-text-grey">
-                    [3] This is what you currently contribute towards your savings or
-                    investments. It is also used to determine the current living costs by
-                    subtracting the amount from your salary. Any further saving
-                    contributions are calculated by subtracting the living costs from the
-                    salary.
-                </p>
-                <p id="rii" class="has-text-grey">
-                    [4] In some places, the pension you receive is increased each year to
-                    account for inflation. If this is not the case where you are, just
-                    leave this value at 0.
-                </p>
+                <div id="footnotes"></div>
             </div>
         </div>
         <script type="module" src="/src/main.ts"></script>

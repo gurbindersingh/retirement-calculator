@@ -1,7 +1,8 @@
 import { drawChart } from "./chart";
 import { createProjection } from "./projection";
-import { renderInputs } from "./render";
-import { inputs, resetSettings, settings } from "./settings";
+import { renderControls } from "./render";
+import { resetSettings, settings } from "./settings";
+import { inputs } from "./inputs";
 
 export function setupEventListeners() {
     inputs.forEach((input) =>
@@ -18,9 +19,10 @@ export function setupEventListeners() {
             drawChart(data);
         })
     );
+
     document.getElementById("reset")!.addEventListener("click", () => {
         resetSettings();
-        renderInputs();
+        renderControls();
         const data = createProjection();
         drawChart(data);
     });
