@@ -31,7 +31,7 @@ function renderControls() {
                               </p>`;
 
             return `<div class="field cell">
-                        <label class="label">${label}</label>
+                        <label class="label" for="${id}">${label}</label>
                         <input 
                             value="${isPercentage ? (100 * value).toPrecision(3) : value}"
                             step="${isPercentage ? 0.1 : 1}"
