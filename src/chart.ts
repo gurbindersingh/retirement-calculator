@@ -47,9 +47,13 @@ function createChart(plotData: PlotData[]) {
 
     document.getElementById("chart-container")!.innerHTML = `
         <h3 class="is-sr-only">Chart</h3>
-        <canvas id="chart" height="${
-            window.innerWidth > window.innerHeight ? 100 : 200
-        }"></canvas>`;
+        <canvas 
+            id="chart" 
+            height="${
+                window.innerWidth > window.innerHeight ? 100 : 200
+            }" 
+            aria-label="A chart showing the projected salary, living costs and savings/investments"
+        ></canvas>`;
 
     const chartElement = document.getElementById("chart") as HTMLCanvasElement;
     return new Chart(chartElement, {
