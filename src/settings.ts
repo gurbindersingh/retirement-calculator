@@ -26,7 +26,7 @@ const defaults = {
     averageInflation: 0.03,
     retirementIncome: 50000,
     retirementIncomeIncrease: 0,
-    rateOfReturn: 0.075,
+    rateOfReturn: 0.05,
     tax: 0.275
 };
 
