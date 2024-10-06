@@ -1,5 +1,6 @@
 import { settings } from "./settings";
 import { inputs } from "./inputs";
+import { setupEventListeners } from "./setup";
 
 function renderControls() {
     let footnoteCounter = 1;
@@ -54,6 +55,8 @@ function renderControls() {
 
     document.getElementById("controls")!.innerHTML =
         `<h3 class="is-sr-only">Inputs</h3>` + inputElements + resetButton;
+
+    setupEventListeners();
 }
 
 function renderFootnotes() {
