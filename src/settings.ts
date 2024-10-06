@@ -17,7 +17,7 @@ interface Settings {
 const defaults = {
     currentAge: 30,
     retirementAge: 65,
-    lifeExpectancy: 90,
+    lifeExpectancy: 80,
     netSalary: 30000,
     salaryIncrease: 0.02,
     savingsPercentage: 0.15,
