@@ -54,8 +54,7 @@ function renderControls() {
                              Reset values
                          </button>`;
 
-    document.getElementById("controls")!.innerHTML =
-        `<h3 class="is-sr-only">Inputs</h3>` + inputElements + resetButton;
+    document.getElementById("controls")!.innerHTML = inputElements + resetButton;
 
     setupEventListeners();
 }
@@ -74,14 +73,17 @@ function renderFootnotes() {
 }
 
 function renderTable(data: PlotData[]) {
-    const rows = data.map((row: PlotData) => (
-        `<tr>
-            <td>${row.year}</td>
-            <td>${row.investments}</td>
-            <td>${row.income}</td>
-            <td>${row.livingCosts}</td>
-        </tr>`
-    )).join("");
+    const rows = data
+        .map(
+            (row: PlotData) =>
+                `<tr>
+                    <td>${row.year}</td>
+                    <td>${row.investments}</td>
+                    <td>${row.income}</td>
+                    <td>${row.livingCosts}</td>
+                </tr>`
+        )
+        .join("");
     document.getElementById("data-table")!.innerHTML = rows;
 }
 
