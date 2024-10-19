@@ -1,6 +1,6 @@
 import { drawChart } from "./chart";
 import { createProjection } from "./projection";
-import { renderControls } from "./render";
+import { renderControls, renderTable } from "./render";
 import { resetSettings, settings } from "./settings";
 import { inputs, toggleInputErrorHints } from "./inputs";
 
@@ -21,9 +21,10 @@ export function setupEventListeners() {
                 const start = Date.now();
                 const data = createProjection();
                 drawChart(data);
+                renderTable(data);
                 console.log(`Time to render: ${Date.now() - start} ms`);
             } else {
-                toggleInputErrorHints(input.id, input.isValid())
+                toggleInputErrorHints(input.id, input.isValid());
             }
         })
     );
@@ -33,5 +34,6 @@ export function setupEventListeners() {
         renderControls();
         const data = createProjection();
         drawChart(data);
+        renderTable(data);
     });
 }
