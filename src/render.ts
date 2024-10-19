@@ -77,7 +77,7 @@ function renderTable(data: PlotData[]) {
         .map(
             (row: PlotData) =>
                 `<tr>
-                    <td>${row.year}</td>
+                    <td>${row.age}</td>
                     <td>${Math.round(row.investments)}</td>
                     <td>${Math.round(row.income)}</td>
                     <td>${Math.round(row.livingCosts)}</td>
