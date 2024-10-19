@@ -78,9 +78,9 @@ function renderTable(data: PlotData[]) {
             (row: PlotData) =>
                 `<tr>
                     <td>${row.year}</td>
-                    <td>${row.investments}</td>
-                    <td>${row.income}</td>
-                    <td>${row.livingCosts}</td>
+                    <td>${Math.round(row.investments)}</td>
+                    <td>${Math.round(row.income)}</td>
+                    <td>${Math.round(row.livingCosts)}</td>
                 </tr>`
         )
         .join("");
