@@ -23,7 +23,7 @@ const inputs: Inputs[] = [
         id: "current-age",
         isValid: () => settings.currentAge <= settings.retirementAge,
         min: 0,
-        max: 150
+        max: 100
     },
     {
         label: "Retirement Age",
@@ -34,7 +34,7 @@ const inputs: Inputs[] = [
         id: "retirement-age",
         isValid: () => settings.retirementAge < settings.lifeExpectancy,
         min: 0,
-        max: 150
+        max: 100
     },
     {
         label: "Life Expectancy",
@@ -44,7 +44,7 @@ const inputs: Inputs[] = [
         id: "life-expectancy",
         isValid: () => true,
         min: 0,
-        max: 150
+        max: 100
     },
     {
         label: "Annual Net Salary",

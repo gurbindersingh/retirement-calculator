@@ -65,7 +65,7 @@ function initializeDataStructure(): PlotData[] {
 }
 
 /**
- * Given the net value of an asset. Calculate the gross value.
+ * Given the net value of an asset, calculate the gross value.
  *
  * @param netValue Net value of asset (after tax)
  * @param growthFactor Growth of the asset

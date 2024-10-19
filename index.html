@@ -8,12 +8,32 @@
     <body class="m-5">
         <h1 class="title is-2">Retirement Calculator</h1>
         <h2 class="subtitle is-4">
-            A generic retirement calculator to help you figure out how much you'll have
-            when you retire.
+            A generic calculator to help you figure out how much you'll have when you
+            retire.
         </h2>
         <div id="app" class="">
+            <h3 class="is-sr-only">Inputs</h3>
             <div id="controls" class="grid is-col-min-12 mb-5"></div>
+            <h3 class="is-sr-only">Chart</h3>
             <div id="chart-container" class="column"></div>
+            <h3 class="is-sr-only">Data table</h3>
+            <details class="my-6">
+                <summary>Show table</summary>
+                <table class="table m-auto">
+                    <caption class="is-sr-only">
+                        A table containing the same data as the chart
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Investments/Savings</th>
+                            <th>Income</th>
+                            <th>Living costs</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table"></tbody>
+                </table>
+            </details>
             <div class="content mt-5">
                 <div id="how-it-works">
                     <h3 class="">How it works</h3>
@@ -55,9 +75,9 @@
                     </p>
                     <p>
                         Note that this calculator does not consider expenses like a
-                        mortgage, which would end after a certain period. To account for
-                        that, you could, for example, subtract the annual mortgage
-                        payments from your salary instead.
+                        mortgage, which would end after a certain number of years. To
+                        account for that, you could, for example, subtract the annual
+                        mortgage payments from your salary instead.
                     </p>
                     <p>
                         Once living costs exceed income, we start using our savings. In

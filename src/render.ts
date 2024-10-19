@@ -1,6 +1,7 @@
 import { settings } from "./settings";
 import { inputs } from "./inputs";
 import { setupEventListeners } from "./setup";
+import { PlotData } from "./IPlotData";
 
 function renderControls() {
     let footnoteCounter = 1;
@@ -72,4 +73,16 @@ function renderFootnotes() {
     document.getElementById("footnotes")!.innerHTML = footnotes;
 }
 
-export { renderControls, renderFootnotes };
+function renderTable(data: PlotData[]) {
+    const rows = data.map((row: PlotData) => (
+        `<tr>
+            <td>${row.year}</td>
+            <td>${row.investments}</td>
+            <td>${row.income}</td>
+            <td>${row.livingCosts}</td>
+        </tr>`
+    )).join("");
+    document.getElementById("data-table")!.innerHTML = rows;
+}
+
+export { renderControls, renderFootnotes, renderTable };
