@@ -28,7 +28,7 @@ const inputs: Inputs[] = [
     {
         label: "Retirement Age",
         description: "",
-        errorMessage: "This value must not be greater than the life expectancy!",
+        errorMessage: "This value must be less than the life expectancy!",
         isPercentage: false,
         settingsKey: "retirementAge",
         id: "retirement-age",
@@ -39,10 +39,11 @@ const inputs: Inputs[] = [
     {
         label: "Life Expectancy",
         description: "",
+        errorMessage: "This value must be greater than the retirement age!",
         isPercentage: false,
         settingsKey: "lifeExpectancy",
         id: "life-expectancy",
-        isValid: () => true,
+        isValid: () => settings.retirementAge < settings.lifeExpectancy,
         min: 0,
         max: 100
     },
