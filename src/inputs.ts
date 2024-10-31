@@ -11,6 +11,8 @@ interface Inputs {
     isValid: () => boolean;
     min: number;
     max: number;
+    addon?: string;
+    additionalSetup?: () => void;
 }
 
 const inputs: Inputs[] = [
@@ -55,7 +57,12 @@ const inputs: Inputs[] = [
         id: "net-salary",
         isValid: () => true,
         min: 0,
-        max: 1_000_000_000
+        max: 1_000_000_000,
+        additionalSetup: () => {
+            inputs
+                .filter((input) => input.id === "savings-percentage")
+                .forEach((input) => input.additionalSetup && input.additionalSetup());
+        }
     },
     {
         label: "Salary Increase (in %)",
@@ -100,7 +107,24 @@ const inputs: Inputs[] = [
                     salary.`,
         isValid: () => true,
         min: -100,
-        max: 100
+        max: 100,
+        addon: `<p class="control">
+                    <span class="button is-static">
+                        = 
+                        <span id="absolut-savings-contributions" class="mx-1">${Math.round(
+                            (settings.netSalary * settings.savingsPercentage) / 12
+                        )}
+                        </span>
+                        / month
+                    </span>
+                </p>`,
+        additionalSetup: () => {
+            document.getElementById(
+                "absolut-savings-contributions"
+            )!.innerHTML = `${Math.round(
+                (settings.netSalary * settings.savingsPercentage) / 12
+            )}`;
+        }
     },
     {
         label: "Average Annual Inflation (in %)",

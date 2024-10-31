@@ -32,20 +32,29 @@ function renderControls() {
                                 ${errorMessage ? errorMessage : ""}
                               </p>`;
 
-            return `<div class="field cell">
-                        <label class="label" for="${id}">${label}</label>
-                        <input 
-                            value="${isPercentage ? (100 * value).toPrecision(3) : value}"
-                            step="${isPercentage ? 0.1 : 1}"
-                            aria-label="${label}"
-                            id="${id}"
-                            class="input"
-                            type="number"
-                            min="${min}"
-                            max="${max}"
-                        />
-                        ${helpText}
-                        ${errorText}
+            return `<div class="cell">
+                        <div class="field">
+                            <label class="label" for="${id}">${label}</label>
+                            <div class="field has-addons mb-0">
+                                <div class="control is-expanded">
+                                    <input 
+                                        value="${isPercentage ? (100 * value).toPrecision(3) : value}"
+                                        step="${isPercentage ? 0.1 : 1}"
+                                        aria-label="${label}"
+                                        id="${id}"
+                                        class="input"
+                                        type="number"
+                                        min="${min}"
+                                        max="${max}"
+                                    />
+                                </div>
+                                ${
+                                    input.addon ? input.addon : ""
+                                }
+                            </div>
+                            ${helpText}
+                            ${errorText}
+                        </div>
                     </div>`;
         })
         .join("");
