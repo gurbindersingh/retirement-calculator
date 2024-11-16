@@ -12,11 +12,14 @@ function initializeDataStructure(): PlotData[] {
     const data: PlotData[] = Array(settings.lifeExpectancy - settings.currentAge + 1)
         .fill(0)
         .map((_, index: number) => ({
+            // Initialize values that do not depend on others
             year: index,
             age: settings.currentAge + index,
             inflation: Math.pow(1 + settings.averageInflation, index)
         }))
         .map((value: { year: number; age: number; inflation: number }) => ({
+            // Use previous values to initialize income and the annual increase.
+            // NOTE: the incomeIncrease is relative to the initial income
             ...value,
             income:
                 value.age < settings.retirementAge
@@ -38,6 +41,8 @@ function initializeDataStructure(): PlotData[] {
                 income: number;
                 incomeIncrease: number;
             }) => ({
+                // Calculate the living costs and annual income with taking
+                // the yearly increase into account.
                 ...value,
                 income: value.income * value.incomeIncrease,
                 livingCosts: settings.livingCosts * value.inflation
@@ -52,6 +57,7 @@ function initializeDataStructure(): PlotData[] {
                 incomeIncrease: number;
                 livingCosts: number;
             }) => ({
+                // Calculate the savings for each year.
                 ...value,
                 savings: value.income - value.livingCosts,
                 investments: 0,
@@ -85,16 +91,15 @@ function calculateGrossValue(netValue: number, growthFactor: number, tax: number
  */
 export function createProjection() {
     const projections = initializeDataStructure();
-    console.log("Creating projections");
 
     for (let i = 1; i < projections.length; i++) {
         const previous = projections[i - 1];
         const current = projections[i];
 
         if (current.savings >= 0) {
-            current.investedAmount = previous.investedAmount + current.savings;
+            current.investedAmount = previous.investedAmount + previous.savings;
             current.investments =
-                previous.investments * (1 + settings.rateOfReturn) + current.savings;
+                previous.investments * (1 + settings.rateOfReturn) + previous.savings;
         } else if (previous.investments > 0) {
             const deficit = Math.abs(current.savings);
             const growth = previous.investments / previous.investedAmount;
@@ -111,5 +116,7 @@ export function createProjection() {
             );
         }
     }
+    console.log("Created projections:", projections);
+
     return projections;
 }
