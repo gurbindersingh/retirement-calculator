@@ -88,6 +88,7 @@ function renderTable(data: PlotData[]) {
                 `<tr>
                     <td>${row.age}</td>
                     <td>${Math.round(row.investments)}</td>
+                    <td>${Math.round(row.savings)}</td>
                     <td>${Math.round(row.income)}</td>
                     <td>${Math.round(row.livingCosts)}</td>
                 </tr>`
