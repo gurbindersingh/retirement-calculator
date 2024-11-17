@@ -48,7 +48,7 @@
                     <p>
                         The living costs are calculated using the value for contributions
                         towards saving:
-                        <code>living costs = salary * (100% - contributions)</code>. From
+                        <code>living costs = salary - annual savings</code>. From
                         there, for each year the salary is increased by the specified
                         factor and the living costs by inflation rate.
                     </p>
@@ -59,7 +59,7 @@
                         Specifically, the total savings available for any given year is
                         equal to
                         <code
-                            >(previous year's total savings) * rate of return + current
+                            >(previous year's total savings) * rate of return + previous
                             year's savings</code
                         >. This is similar to how a savings account typically works, and
                         for simplicity, we apply the same logic to investments.
