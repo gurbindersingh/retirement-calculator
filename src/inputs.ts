@@ -27,10 +27,19 @@ const inputs: Inputs[] = [
         isPercentage: false,
         settingsKey: "currentAge",
         id: "current-age",
-        isValid: () => settings.currentAge <= settings.retirementAge,
+        isValid: () =>
+            settings.currentAge <= settings.retirementAge &&
+            settings.currentAge < settings.lifeExpectancy,
         min: 0,
         max: 100,
-        steps: 1
+        steps: 1,
+        runOnChange: () => {
+            inputs
+                .filter((input) =>
+                    ["retirement-age", "life-expectancy"].includes(input.id)
+                )
+                .forEach((input) => toggleInputErrorHints(input.id, input.isValid()));
+        }
     },
     {
         label: "Retirement Age",
@@ -42,7 +51,12 @@ const inputs: Inputs[] = [
         isValid: () => settings.retirementAge < settings.lifeExpectancy,
         min: 0,
         max: 100,
-        steps: 1
+        steps: 1,
+        runOnChange: () => {
+            inputs
+                .filter((input) => ["current-age", "life-expectancy"].includes(input.id))
+                .forEach((input) => toggleInputErrorHints(input.id, input.isValid()));
+        }
     },
     {
         label: "Life Expectancy",
@@ -51,10 +65,17 @@ const inputs: Inputs[] = [
         isPercentage: false,
         settingsKey: "lifeExpectancy",
         id: "life-expectancy",
-        isValid: () => settings.retirementAge < settings.lifeExpectancy,
+        isValid: () =>
+            settings.retirementAge < settings.lifeExpectancy &&
+            settings.currentAge < settings.lifeExpectancy,
         min: 0,
         max: 100,
-        steps: 1
+        steps: 1,
+        runOnChange: () => {
+            inputs
+                .filter((input) => ["current-age", "retirement-age"].includes(input.id))
+                .forEach((input) => toggleInputErrorHints(input.id, input.isValid()));
+        }
     },
     {
         label: "Annual Net Salary",
@@ -126,7 +147,7 @@ const inputs: Inputs[] = [
                         <span id="absolut-savings-contributions" class="mx-1">
                             ${(
                                 (100 * settings.monthlySavings) /
-                                    (settings.netSalary / 12)
+                                (settings.netSalary / 12)
                             ).toFixed(1)}
                         </span>
                         %
@@ -134,10 +155,9 @@ const inputs: Inputs[] = [
                 </p>`,
         runOnChange: () => {
             // Update the percentage display
-            document.getElementById(
-                "absolut-savings-contributions"
-            )!.innerHTML = `${(
-                (100 * settings.monthlySavings) / (settings.netSalary / 12)
+            document.getElementById("absolut-savings-contributions")!.innerHTML = `${(
+                (100 * settings.monthlySavings) /
+                (settings.netSalary / 12)
             ).toFixed(1)}`;
         }
     },
