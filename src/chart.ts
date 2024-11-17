@@ -63,6 +63,7 @@ function createChart(plotData: PlotData[]) {
             datasets: createDatasets([])
         },
         options: {
+            animation: false,
             datasets: {
                 line: {
                     borderWidth: 2,

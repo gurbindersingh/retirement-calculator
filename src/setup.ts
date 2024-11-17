@@ -26,7 +26,7 @@ export function setupEventListeners() {
             } else {
                 toggleInputErrorHints(input.id, input.isValid());
             }
-            if (input.additionalSetup) input.additionalSetup();
+            if (input.runOnChange) input.runOnChange();
         })
     );
 
