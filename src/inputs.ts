@@ -23,7 +23,7 @@ const inputs: Inputs[] = [
     {
         label: "Current Age",
         description: "",
-        errorMessage: "This value must not be greater than your retirement age!",
+        errorMessage: "This value must less than or equal to your retirement age and less than the life expectancy!",
         isPercentage: false,
         settingsKey: "currentAge",
         id: "current-age",
@@ -44,7 +44,7 @@ const inputs: Inputs[] = [
     {
         label: "Retirement Age",
         description: "",
-        errorMessage: "This value must be less than the life expectancy!",
+        errorMessage: "This value must greater than or equal to your current age and less than the life expectancy!",
         isPercentage: false,
         settingsKey: "retirementAge",
         id: "retirement-age",
