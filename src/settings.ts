@@ -14,7 +14,7 @@ interface Settings {
     tax: number;
 }
 
-const defaults = {
+const getDefaults: () => Settings = () => ({
     currentAge: 30,
     retirementAge: 65,
     lifeExpectancy: 80,
@@ -28,14 +28,14 @@ const defaults = {
     retirementIncomeIncrease: 0,
     rateOfReturn: 0.05,
     tax: 0.275
-};
+});
 
 let settings: Settings = window.localStorage.getItem("settings")
     ? JSON.parse(window.localStorage.getItem("settings")!)
-    : defaults;
+    : getDefaults;
 
 function resetSettings() {
-    settings = defaults;
+    settings = getDefaults();
     saveSettings();
 }
 
