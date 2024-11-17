@@ -32,7 +32,7 @@ const getDefaults: () => Settings = () => ({
 
 let settings: Settings = window.localStorage.getItem("settings")
     ? JSON.parse(window.localStorage.getItem("settings")!)
-    : getDefaults;
+    : getDefaults();
 
 function resetSettings() {
     settings = getDefaults();
