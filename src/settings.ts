@@ -4,7 +4,7 @@ interface Settings {
     lifeExpectancy: number;
     netSalary: number;
     salaryIncrease: number;
-    savingsPercentage: number;
+    monthlySavings: number;
     currentSavings: number;
     livingCosts: number;
     averageInflation: number;
@@ -20,7 +20,7 @@ const defaults = {
     lifeExpectancy: 80,
     netSalary: 30000,
     salaryIncrease: 0.02,
-    savingsPercentage: 0.15,
+    monthlySavings: 375,
     currentSavings: 0,
     livingCosts: 0,
     averageInflation: 0.03,

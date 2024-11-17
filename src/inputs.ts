@@ -11,8 +11,12 @@ interface Inputs {
     isValid: () => boolean;
     min: number;
     max: number;
-    addon?: string;
-    additionalSetup?: () => void;
+    steps: number;
+    addon?: () => string;
+    /**
+     * Any additional setup that is specific to this input.
+     */
+    runOnChange?: () => void;
 }
 
 const inputs: Inputs[] = [
@@ -25,7 +29,8 @@ const inputs: Inputs[] = [
         id: "current-age",
         isValid: () => settings.currentAge <= settings.retirementAge,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 1
     },
     {
         label: "Retirement Age",
@@ -36,7 +41,8 @@ const inputs: Inputs[] = [
         id: "retirement-age",
         isValid: () => settings.retirementAge < settings.lifeExpectancy,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 1
     },
     {
         label: "Life Expectancy",
@@ -47,7 +53,8 @@ const inputs: Inputs[] = [
         id: "life-expectancy",
         isValid: () => settings.retirementAge < settings.lifeExpectancy,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 1
     },
     {
         label: "Annual Net Salary",
@@ -57,11 +64,13 @@ const inputs: Inputs[] = [
         id: "net-salary",
         isValid: () => true,
         min: 0,
+        // If you are making so much money and you are probably not using this tool.
         max: 1_000_000_000,
-        additionalSetup: () => {
+        steps: 10,
+        runOnChange: () => {
             inputs
-                .filter((input) => input.id === "savings-percentage")
-                .forEach((input) => input.additionalSetup && input.additionalSetup());
+                .filter((input) => input.id === "monthly-savings")
+                .forEach((input) => input.runOnChange && input.runOnChange());
         }
     },
     {
@@ -80,7 +89,8 @@ const inputs: Inputs[] = [
                     which is approximately 3.23%.`,
         isValid: () => true,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 0.1
     },
     {
         label: "Current Savings",
@@ -92,38 +102,43 @@ const inputs: Inputs[] = [
                     return as specified above.`,
         isValid: () => true,
         min: 0,
-        max: 1_000_000_000
+        max: 1_000_000_000,
+        steps: 10
     },
     {
-        label: "Current Savings Contributions (in %)",
-        description: `The percentage of your salary that goes towards savings`,
-        isPercentage: true,
-        settingsKey: "savingsPercentage",
-        id: "savings-percentage",
+        label: "Savings contributions",
+        description: "What you typically save in a month",
+        isPercentage: false,
+        settingsKey: "monthlySavings",
+        id: "monthly-savings",
         footnote: `This is what you currently contribute towards your savings or
                     investments. It is also used to determine the current living costs by
                     subtracting the amount from your salary. Any further saving
                     contributions are calculated by subtracting the living costs from the
                     salary.`,
         isValid: () => true,
-        min: -100,
-        max: 100,
-        addon: `<p class="control">
+        min: -1_000_000_000,
+        max: 1_000_000_000,
+        steps: 10,
+        addon: () => `<p class="control">
                     <span class="button is-static">
                         = 
-                        <span id="absolut-savings-contributions" class="mx-1">${Math.round(
-                            (settings.netSalary * settings.savingsPercentage) / 12
-                        )}
+                        <span id="absolut-savings-contributions" class="mx-1">
+                            ${(
+                                (100 * settings.monthlySavings) /
+                                    (settings.netSalary / 12)
+                            ).toFixed(1)}
                         </span>
-                        / month
+                        %
                     </span>
                 </p>`,
-        additionalSetup: () => {
+        runOnChange: () => {
+            // Update the percentage display
             document.getElementById(
                 "absolut-savings-contributions"
-            )!.innerHTML = `${Math.round(
-                (settings.netSalary * settings.savingsPercentage) / 12
-            )}`;
+            )!.innerHTML = `${(
+                (100 * settings.monthlySavings) / (settings.netSalary / 12)
+            ).toFixed(1)}`;
         }
     },
     {
@@ -134,7 +149,8 @@ const inputs: Inputs[] = [
         id: "average-inflation",
         isValid: () => true,
         min: -100,
-        max: 100
+        max: 100,
+        steps: 0.1
     },
     {
         label: "Annual Retirement Income",
@@ -144,7 +160,8 @@ const inputs: Inputs[] = [
         id: "retirement-income",
         isValid: () => true,
         min: 0,
-        max: 1_000_000_000
+        max: 1_000_000_000,
+        steps: 10
     },
     {
         label: "Retirement Income Increase (in %)",
@@ -157,7 +174,8 @@ const inputs: Inputs[] = [
                     leave this value at 0.`,
         isValid: () => true,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 0.1
     },
     {
         label: "Rate of Return (in %)",
@@ -167,7 +185,8 @@ const inputs: Inputs[] = [
         id: "rate-of-return",
         isValid: () => true,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 0.1
     },
     {
         label: "Tax on Investments (in %)",
@@ -179,7 +198,8 @@ const inputs: Inputs[] = [
                     is typically the capital gains tax.`,
         isValid: () => true,
         min: 0,
-        max: 100
+        max: 100,
+        steps: 0.1
     }
 ];
 

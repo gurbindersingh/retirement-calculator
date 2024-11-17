@@ -18,7 +18,8 @@ function renderControls() {
                 id,
                 footnote,
                 min,
-                max
+                max,
+                steps
             } = input;
             const value = settingsMap.get(settingsKey)!;
 
@@ -39,7 +40,7 @@ function renderControls() {
                                 <div class="control is-expanded">
                                     <input 
                                         value="${isPercentage ? (100 * value).toPrecision(3) : value}"
-                                        step="${isPercentage ? 0.1 : 1}"
+                                        step="${steps}"
                                         aria-label="${label}"
                                         id="${id}"
                                         class="input"
@@ -49,7 +50,7 @@ function renderControls() {
                                     />
                                 </div>
                                 ${
-                                    input.addon ? input.addon : ""
+                                    input.addon ? input.addon() : ""
                                 }
                             </div>
                             ${helpText}
