@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && pnpm run postbuild",
-    "postbuild": "sed -i 's/\\/assets/assets/g' dist/index.html",
+    "build": "tsc && vite build --base /retirement-calculator/",
     "preview": "vite preview"
   },
   "devDependencies": {
