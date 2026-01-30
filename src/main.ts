@@ -1,16 +1,9 @@
+import { mount } from "svelte";
 import "./style/main.css";
-import { createProjection } from "./projection";
-import { drawChart } from "./chart";
-import { renderControls, renderFootnotes, renderTable } from "./render";
-import { inputs, toggleInputErrorHints } from "./inputs";
+import App from "./App.svelte";
 
-const startTime = Date.now();
+const app = mount(App, {
+  target: document.getElementById("app")!,
+});
 
-renderControls();
-renderFootnotes();
-const data = createProjection();
-drawChart(data);
-renderTable(data)
-inputs.forEach(input => toggleInputErrorHints(input.id, input.isValid()))
-
-console.log(`Time to render: ${Date.now() - startTime} ms`);
+export default app;

@@ -7,6 +7,7 @@ import { settings } from "./settings";
  * @returns An array containing the initialized data points.
  */
 function initializeDataStructure(): PlotData[] {
+  settings.tst;
   settings.livingCosts = settings.netSalary - 12 * settings.monthlySavings;
 
   const data: PlotData[] = Array(
